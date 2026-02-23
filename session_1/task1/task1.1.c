@@ -30,9 +30,8 @@ int main(void) {
 	printf("Enter purchase amount: ");
     scanf("%f", &purchase_amount);
 	
-	// Complete your code here
-	if (){  // todo
-		// todo
+	if (account_balance>purchase_amount){  
+		account_balance = account_balance - purchase_amount;
 		printf("Transaction Approved. Remaining balance %.2f\n", account_balance);
 	}
 	else{
