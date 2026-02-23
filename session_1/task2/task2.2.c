@@ -32,8 +32,8 @@
 #include <stdio.h>
 
 int main(void) {
-    int choice;
-    double amount, converted;
+    int choice; //this will be from 1-4
+    double amount, converted; //float up to 6 digits
 
     /* conversion rates */
     double USD_TO_EUR = 0.92;
@@ -55,7 +55,21 @@ int main(void) {
 
 	// Complete your code here
     switch (choice) {
-        case :
+        case 1:
+            amount = amount * 0.92;
+            printf("%lf", amount, "EUR"); //how to implement "%.2f"
+            break;
+        case 2:
+            amount = amount * 1.08;
+            printf("%lf",amount, "USD");
+            break;
+        case 3:
+            amount = amount * 0.79;
+            printf("%lf",amount, "GBP");
+            break;
+        case 4:
+            amount = amount * 1.27;
+            printf("%lf",amount, "USD");
             break;
         default:
             printf("Invalid option\n");

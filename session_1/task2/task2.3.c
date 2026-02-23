@@ -44,7 +44,7 @@
 
 int main(void) {
     int choice;
-    double balance = 100.0;
+    double balance = 100.0; //init balance to 100
     double amount;
 
 	/* Display ATM menu */
@@ -53,11 +53,29 @@ int main(void) {
 	printf("2. Deposit Money\n");
 	printf("3. Withdraw Money\n");
 	printf("Enter your choice: ");
-	scanf("%d", &choice);
+	scanf("%d", &choice); //enter the choice
 
 	// complete the rest of the code
 	switch (choice) {
-		case :
+		case 1:
+			printf("Current balance: %.2lf", balance);
+			break;
+		case 2:
+			printf("Enter amount to deposit");
+			scanf("%lf", &amount);
+			balance = balance + amount;
+			printf("Current balance: %.2lf", balance);
+			break;
+		case 3:
+			printf("Choose amount to withdraw");
+			scanf("%lf", &amount);
+			if (amount>balance)
+			{
+				printf("Insufficient balance or invalid amount");				
+			} else {
+				balance = balance - amount;
+				printf("Current balance: %.2lf", balance);
+			}
 			break;
 		default:
 			printf("Invalid choice. Please try again.\n");

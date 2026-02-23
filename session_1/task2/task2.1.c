@@ -45,9 +45,25 @@ int main(int argc, char *argv[]) {
     operation = argv[2][0];  // Just take the first character of the second argument
     num2 = atof(argv[3]);  // Convert third argument to float
     
+    
     // Complete your code here
 	switch(operation){
-		case :
+		case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case 'x':
+            result = num1 * num2;
+            break;
+        case '/':
+            if (num2==0)
+            {
+                printf("Error, division by zero!");
+            } else{
+                result = num1 / num2;
+            }
             break;
 		default:
 			printf("Operation not defined!\n");
