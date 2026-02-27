@@ -24,9 +24,11 @@ int main(void) {
         printf("Enter temperature with scale (e.g., 23.5C or 75F): ");
         
         // TODO: Use fgets to read the input
+        fgets(input, valid_input, stdin); //could be wrong
         
         // TODO: Remove the newline character from input
         // Hint: input[strcspn(input, "\n")] = 0;
+                
         
         // TODO: Parse the input to extract temperature and scale
         // Hint: Use sscanf(input, "%f%c", &temperature, &scale);
