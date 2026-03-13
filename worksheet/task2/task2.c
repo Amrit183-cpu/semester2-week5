@@ -20,9 +20,13 @@ int main(void){
 
 	printf("Enter a hexadecimal:");
 	scanf("%s", hex); //take userinput and save to hex
+	if (strlen(hex)>8){
+		printf("Error: Invalid Hexadecimal\n"); //check that length of hex max 8
+		return 0; 
+	}
 	for (int k=0; k<strlen(hex);k++){
 		if (isdigit(hex[k])) { //check if a char is from 0-9
-			printf("%c", hex[k]);
+			//printf("%c", hex[k]);
 		}
 		else if (isalpha(hex[k])){ //check if a char is a-F
 			for (int j=0; j<12; j++){ //loop through hex_letters array
@@ -30,7 +34,7 @@ int main(void){
 				if (hex[k] == hex_letters[j]){
 					result = true; //result is true if the current char is in hex_letters
 					if (result == true){
-						printf("%c", hex[k]);
+						//printf("%c", hex[k]);
 						break;
 					}
 				}
@@ -46,63 +50,60 @@ int main(void){
 		}
 	}
 
-/* now do conversion
-1A3 = 419
-3 + (A*16^1) + (1 * 16 ^ 2)
-3 + (160) + (256)	
-*/
-	printf("\n"); //new line
+
 	hex[strlen(hex)] = '\0';
-	printf("length of hex: %ld \n", strlen(hex));
 
 	// if input contains invalid hex digit
 	// printf("Error: Invalid Hexadecimal\n");
 	
-	for (int i=strlen(hex)-1; i=0; i--){
-		printf("%d", i);
+	for (int i=strlen(hex)-1; i>=0; i--){  //3 to 0, 2 1 0
 		//convert letters to numbers 
 		switch (hex[i]) {
 			case ('a'):
-				decimal = decimal + (10 * pow(16,i)); //10 * 16^i
+				decimal = decimal + (10 * pow(16,strlen(hex)-1-i)); //10 * 16^i
 				break;
 			case ('A'):
-				decimal = decimal + (10 * pow(16,i)); //10 * 16^i
+				decimal = decimal + (10 * pow(16,strlen(hex)-1-i)); //10 * 16^i
 				break;
 			case ('b'):
-				decimal = decimal + (11 * pow(16,i)); //11 * 16^i
+				decimal = decimal + (11 * pow(16,strlen(hex)-1-i)); //11 * 16^i
 				break;
 			case ('B'):
-				decimal = decimal + (11 * pow(16,i)); //11 * 16^i
+				decimal = decimal + (11 * pow(16,strlen(hex)-1-i)); //11 * 16^i
 				break;
 			case ('c'):
-				decimal = decimal + (12 * pow(16,i)); //12 * 16^i
+				decimal = decimal + (12 * pow(16,strlen(hex)-1-i)); //12 * 16^i
 				break;
 			case ('C'):
-				decimal = decimal + (12 * pow(16,i)); //12 * 16^i
+				decimal = decimal + (12 * pow(16,strlen(hex)-1-i)); //12 * 16^i
 				break;
 			case ('d'):
-				decimal = decimal + (13 * pow(16,i)); //13 * 16^i
+				decimal = decimal + (13 * pow(16,strlen(hex)-1-i)); //13 * 16^i
 				break;
 			case ('D'):
-				decimal = decimal + (13 * pow(16,i)); //13 * 16^i
+				decimal = decimal + (13 * pow(16,strlen(hex)-1-i)); //13 * 16^i
 				break;
 			case ('e'):
-				decimal = decimal + (14 * pow(16,i)); //14 * 16^i
+				decimal = decimal + (14 * pow(16,strlen(hex)-1-i)); //14 * 16^i
 				break;
 			case ('E'):
-				decimal = decimal + (14 * pow(16,i)); //14 * 16^i
+				decimal = decimal + (14 * pow(16,strlen(hex)-1-i)); //14 * 16^i
 				break;
 			case ('f'):
-				decimal = decimal + (15 * pow(16,i)); //15 * 16^i
+				decimal = decimal + (15 * pow(16,strlen(hex)-1-i)); //15 * 16^i
 				break;
 			case ('F'):
-				decimal = decimal + (15 * pow(16,i)); //15 * 16^i
+				decimal = decimal + (15 * pow(16,strlen(hex)-1-i)); //15 * 16^i
 				break;
 		}
-		decimal = decimal + (hex[i] * pow(16,i)); 
-	} 
-		
 
+		if (isdigit(hex[i])){
+			decimal = decimal + ((hex[i]-48) * pow(16,strlen(hex)-1-i)); //-48 to get numerical value from ascii
+			//printf("decimal:%ld\n", decimal);
+		}
+	} 
+
+	//printf("\n");
 	// print the decimal result
 	printf("decimal:%ld\n", decimal);
 	
